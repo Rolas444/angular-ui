@@ -1,1 +1,37 @@
-<app-todo></app-todo>
+<div class="todo-container">
+    <!-- <app-todo 
+    *ngFor="
+    let todo of todoData;
+    let i = index;
+    trackBy: trackByFn;
+    let f = first;
+    let l = last;
+    let odd = odd;
+    let even = even;"
+    [todoData]="todo" 
+    [first]="f"
+    [last]="l"
+    [odd]="odd"
+    [even]="even"
+    (onClickIcon)="getTodoInfo($event)"
+    ></app-todo> -->
+    @for (
+    todo of todoData; 
+    track todo.id; 
+    let f = $first;
+    let l = $last;
+    let odd = $odd;
+    let even = $even;
+    ) {
+        <app-todo 
+        [todoData]="todo" 
+        [first]="f"
+        [last]="l"
+        [odd]="odd"
+        [even]="even"
+        (onClickIcon)="getTodoInfo($event)"
+        ></app-todo>
+    } @empty {
+        No hay datos
+    }
+</div>
